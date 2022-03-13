@@ -7,7 +7,7 @@
 
 # Fetch parkings in Strasbourg through the API
 # https://data.strasbourg.eu/api/records/1.0/search/?dataset=parkings&q=&lang=fr&timezone=Europe%2FParis
-function fetch_parkings($location = null, $radius = 800) {
+function fetch_parkings($location = null, $radius = 800, $results = 10) {
     $parkings = [];
 
     $url = 'https://data.strasbourg.eu/api/records/1.0/search/?dataset=parkings&q=&lang=fr&timezone=Europe%2FParis';
@@ -16,6 +16,11 @@ function fetch_parkings($location = null, $radius = 800) {
     if ($location) {
         # geofilter.distance=48.584614,7.7507127,1000
         $url .= '&geofilter.distance=' . $location['lat'] . ',' . $location['lng'] . ',' . $radius;
+    }
+
+    # If results is set, get only the n results
+    if ($results) {
+        $url .= '&rows=' . $results;
     }
 
     $json = file_get_contents($url);
@@ -66,22 +71,30 @@ function fetch_parkings($location = null, $radius = 800) {
 }
 
 # Fetch parkings
+$location = null;
+$radius = 800;
+$results = 10;
+
 if (isset($_GET['lat']) && isset($_GET['lng']) && isset($_GET['radius'])) {
     $location = [
         "lat" => $_GET['lat'],
         "lng" => $_GET['lng']
     ];
     $radius = $_GET['radius'];
-    $parkings = fetch_parkings($location, $radius);
-} elseif (isset($_GET['lat']) && isset($_GET['lng'])) {
+} 
+
+if (isset($_GET['lat']) && isset($_GET['lng'])) {
     $location = [
         "lat" => $_GET['lat'],
         "lng" => $_GET['lng']
     ];
-    $parkings = fetch_parkings($location);
-} else {
-    $parkings = fetch_parkings();
 }
+
+if (isset($_GET['results'])) {
+    $results = $_GET['results'];
+}
+
+$parkings = fetch_parkings($location, $radius, $results);
 
 # Return parkings with json format
 header('Content-Type: application/json');
