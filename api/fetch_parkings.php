@@ -80,6 +80,11 @@ if (isset($_GET['lat']) && isset($_GET['lng']) && isset($_GET['radius'])) {
         "lat" => $_GET['lat'],
         "lng" => $_GET['lng']
     ];
+
+    // Trim lat & lng to 10 characters
+    $location['lat'] = substr($location['lat'], 0, 10);
+    $location['lng'] = substr($location['lng'], 0, 10);
+
     $radius = $_GET['radius'];
 } 
 
@@ -88,6 +93,10 @@ if (isset($_GET['lat']) && isset($_GET['lng'])) {
         "lat" => $_GET['lat'],
         "lng" => $_GET['lng']
     ];
+
+    // Trim lat & lng to 10 characters
+    $location['lat'] = substr($location['lat'], 0, 10);
+    $location['lng'] = substr($location['lng'], 0, 10);
 }
 
 if (isset($_GET['results'])) {
