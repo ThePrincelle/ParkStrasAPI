@@ -23,16 +23,16 @@ jobs:
               "user": "${{ secrets.PUSHOVER_USER }}",
               "message": "Mise en production de 'ParkStras API'."
             }
-          
+
       - name: Deploy to Infomaniak
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
           ARGS: "-rltgoDzvO --delete"
-          SOURCE: "api/"
+          SOURCE: "app/"
           REMOTE_HOST: 464i8.ftp.infomaniak.com
           REMOTE_USER: 464i8_ci
-          TARGET: /home/clients/04cd6fa9bfb5342793851e99c0041e14/sites/services/parkstras/api
+          TARGET: /home/clients/04cd6fa9bfb5342793851e99c0041e14/sites/services/parkstras
 
       - name: Notify on success
         uses: jasongitmail/fast-webhook@v1.1.4
