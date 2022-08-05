@@ -32,7 +32,7 @@ jobs:
           SOURCE: "app/"
           REMOTE_HOST: 464i8.ftp.infomaniak.com
           REMOTE_USER: 464i8_ci
-          EXCLUDE: "app/db/*"
+          EXCLUDE: "app/db"
           TARGET: /home/clients/04cd6fa9bfb5342793851e99c0041e14/sites/services/parkstras
 
       - name: Notify on success
