@@ -61,6 +61,17 @@ function fetch_parkings($location = null, $radius = 800, $results = 10) {
                 "etat" => $parking_details['etat'],
                 "updated_at" => $parking_details_data['records'][0]['record_timestamp']
             ];
+
+            if ($details["etat"] == 0) {
+                // Delete occupation from details
+                unset($details["occupation"]);
+
+                // If infousager is OUVERT, set etat to 1 (OPEN)
+                if ($parking_details["infousager"] == "OUVERT") {
+                    $details["etat"] = 1;
+                }
+            }
+
             $parking = array_merge($parking, $details);
         }
 

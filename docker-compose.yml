@@ -8,5 +8,5 @@ services:
     ports:
       - '80:80'
     volumes:
-      - './api:/var/www/html'
+      - './app:/var/www/html'
     restart: unless-stopped
