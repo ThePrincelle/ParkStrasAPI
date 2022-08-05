@@ -40,11 +40,13 @@ function fetch_all_parkings() {
         ];
 
         // Format description
-        $parking['description'] = str_replace("     ", "\n\n", $parking['description']);
-        $parking['description'] = str_replace("    ", "\n\n", $parking['description']);
-        $parking['description'] = str_replace("   ", "\n\n", $parking['description']);
-        $parking['description'] = str_replace("  ", "\n\n", $parking['description']);
-        $parking['description'] = str_replace(" - ", "\n- ", $parking['description']);
+        if ($parking['description'] != null) {
+            $parking['description'] = str_replace("     ", "\n\n", $parking['description']);
+            $parking['description'] = str_replace("    ", "\n\n", $parking['description']);
+            $parking['description'] = str_replace("   ", "\n\n", $parking['description']);
+            $parking['description'] = str_replace("  ", "\n\n", $parking['description']);
+            $parking['description'] = str_replace(" - ", "\n- ", $parking['description']);
+        }
 
         // Add parking details if they exist
         if (isset($parking_details_data['records'][0])) {
