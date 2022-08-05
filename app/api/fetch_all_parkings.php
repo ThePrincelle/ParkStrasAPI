@@ -39,6 +39,12 @@ function fetch_all_parkings() {
             "url" => $record['fields']['friendlyurl'],
         ];
 
+        // Format description
+        $parking['description'] = str_replace("     ", "\n\n", $parking['description']);
+        $parking['description'] = str_replace("    ", "\n\n", $parking['description']);
+        $parking['description'] = str_replace("   ", "\n", $parking['description']);
+        $parking['description'] = str_replace("  ", "\n", $parking['description']);
+
         // Add parking details if they exist
         if (isset($parking_details_data['records'][0])) {
             $parking_details = $parking_details_data['records'][0]['fields'];
