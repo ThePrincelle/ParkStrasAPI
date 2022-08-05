@@ -53,6 +53,7 @@ function fetch_parkings($location = null, $radius = 800, $results = 10) {
         $parking['description'] = str_replace("    ", "\n\n", $parking['description']);
         $parking['description'] = str_replace("   ", "\n", $parking['description']);
         $parking['description'] = str_replace("  ", "\n", $parking['description']);
+        $parking['description'] = str_replace(" - ", "\n- ", $parking['description']);
 
         // Add parking details if they exist
         if (isset($parking_details_data['records'][0])) {
