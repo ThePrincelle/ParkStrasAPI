@@ -25,7 +25,7 @@ function fetch_all_parkings() {
         $temp_parking = [
             "id" => $parking['id'],
             "name" => $parking['name'],
-            "address" => $parking['address'],
+            "address" => json_decode($parking['address']),
             "position" => json_decode($parking['position'], true),
             "description" => json_decode($parking['description']),
             "url" => $parking['url'],
