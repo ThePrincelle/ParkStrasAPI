@@ -24,7 +24,7 @@ jobs:
               "message": "Mise en production de 'ParkStras API'."
             }
 
-      - name: Deploy to Infomaniak
+      - name: Deploy to Hostinger
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
