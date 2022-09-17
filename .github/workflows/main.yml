@@ -44,7 +44,7 @@ jobs:
             {
               "token": "${{ secrets.PUSHOVER_TOKEN }}",
               "user": "${{ secrets.PUSHOVER_USER }}",
-              "message": "L'application 'ParkStras API' a bien été déployée sur l'infrastructure Infomaniak."
+              "message": "L'application 'ParkStras API' a bien été déployée."
             }
       - name: Notify on failure
         if: ${{ failure() }}
@@ -55,5 +55,5 @@ jobs:
             {
               "token": "${{ secrets.PUSHOVER_TOKEN }}",
               "user": "${{ secrets.PUSHOVER_USER }}",
-              "message": "Erreur lors du déploiement de 'ParkStras API' sur l'infrastructure Infomaniak."
+              "message": "Erreur lors du déploiement de 'ParkStras API'."
             }
