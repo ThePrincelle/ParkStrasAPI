@@ -37,7 +37,7 @@ function fetch_all_parkings() {
         }
 
         if ($parking['etat'] != "null") {
-            $temp_parking['etat'] = intval($parking['etat']);
+            $temp_parking['etat'] = $parking['etat'];
         } else {
             $temp_parking['etat'] = null
         }
