@@ -30,10 +30,11 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
           ARGS: "-rltgoDzvO --delete"
           SOURCE: "app/"
-          REMOTE_HOST: 464i8.ftp.infomaniak.com
-          REMOTE_USER: 464i8_ci
+          REMOTE_HOST: 37.59.180.192
+          REMOTE_USER: u299692851
+          REMOTE_PORT: 65002
           EXCLUDE: "db"
-          TARGET: /home/clients/04cd6fa9bfb5342793851e99c0041e14/sites/services/parkstras
+          TARGET: /home/u299692851/domains/princelle.org/public_html/parkstras
 
       - name: Notify on success
         uses: jasongitmail/fast-webhook@v1.1.4
